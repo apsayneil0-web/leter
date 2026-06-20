@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Date Invitation 💖</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", Arial, sans-serif;
+    }
+
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        overflow: hidden;
+        padding: 20px;
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(12px);
+        border-radius: 20px;
+        padding: 35px 25px;
+        text-align: center;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        border: 1px solid rgba(255,255,255,0.3);
+        width: 100%;
+        max-width: 420px;
+    }
+
+    h1 {
+        color: #fff;
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    #message {
+        margin-top: 15px;
+        font-size: 18px;
+        color: white;
+        font-weight: bold;
+        min-height: 30px;
+    }
+
+    .btn-container {
+        margin-top: 25px;
+        position: relative;
+        height: 120px;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 16px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: 0.2s;
+        position: absolute;
+    }
+
+    #yesBtn {
+        background: #00c853;
+        color: white;
+        left: 25%;
+        top: 30px;
+    }
+
+    #noBtn {
+        background: #ff1744;
+        color: white;
+        left: 60%;
+        top: 30px;
+    }
+
+    @media (max-width: 600px) {
+        h1 {
+            font-size: 18px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1 id="title">Will you go on a date with me? 💖</h1>
+    <div id="message"></div>
+
+    <div class="btn-container">
+        <button id="yesBtn" class="btn">YES 💕</button>
+        <button id="noBtn" class="btn">NO 😅</button>
+    </div>
+</div>
+
+<script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const message = document.getElementById("message");
+    const title = document.getElementById("title");
+    const container = document.querySelector(".btn-container");
+
+    function moveNoButton() {
+        const maxX = container.clientWidth - 100;
+        const maxY = container.clientHeight - 60;
+
+        const x = Math.random() * maxX;
+        const y = Math.random() * maxY;
+
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    }
+
+    // 🖱️ mouse hover (PC)
+    noBtn.addEventListener("mouseover", moveNoButton);
+
+    // 👆 tap/click (mobile + PC)
+    noBtn.addEventListener("click", moveNoButton);
+    noBtn.addEventListener("touchstart", function(e) {
+        e.preventDefault();
+        moveNoButton();
+    });
+
+    // YES button
+    yesBtn.addEventListener("click", () => {
+        message.innerHTML = "💖 Thank you for accepting my invitation! 💖";
+        title.style.display = "none";
+        yesBtn.style.display = "none";
+        noBtn.style.display = "none";
+    });
+</script>
+
+</body>
+</html>
